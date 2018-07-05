@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login/Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+</head>
+<body>
+    <div class="container row">
+        <h1 class="brown-text text-darken-4">Registration</h1>
+        <form class="col s6" action="/register" method="post">
+        {% csrf_token %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }} red-text"{% endif %}>
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul> 
+        {% endif %}
+            <p>First Name: <input type="text" name="first"></p>
+            <p>Last Name: <input type="text" name="last"></p>
+            <p>Email Address: <input type="text" name="email"></p>
+            <p>Password: <input type="password" name="pw"></p>
+            <p>Confirm Password: <input type="password" name="confirm_pw"></p>
+            <input class="waves-effect waves-light btn-small  lime darken-4" type="submit" value="REGISTER">
+        </form>
+        <h1 class="brown-text text-darken-4">Login</h1>
+        <form class="col s6" action="/login" method="post">
+        {% csrf_token %}
+            <p>Email Address: <input type="text" name="email"></p>
+            <p>Password: <input type="password" name="pw"></p>
+            <input class="waves-effect waves-light btn-small  lime darken-4" type="submit" value="LOGIN">
+        </form>
+    </div>
+</body>
+</html>

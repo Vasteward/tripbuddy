@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create a Trip!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+</head>
+<body>
+    <nav class="nav-extended">
+        <div class="nav-content brown darken-4">
+            <ul class="tabs tabs-transparent">
+                <li class="tab"><a class="active" href="/trip/{{the_user.id}}/edit">TRIPS</a></li>
+                <li class="tab"><a class="active" href="/success">HOME</a></li>
+                <li class="tab"><a class="active" href="/trip/logout">LOGOUT</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>Add a Trip</h2>
+        <div class="col s6">
+            {{user.id}}
+            {{admin}}
+                <h4 class="brown-text text-darken-4">Where are we headed to next?</h4>
+                <small class="blue-text">Don't use quotes</small>
+                <form action="/trip/{{admin.id}}" method="post">
+                {% csrf_token %} 
+                    <p><input name="destination" type="text" placeholder="destination"/></p>
+                    <p><textarea name="description" placeholder="description"></textarea></p>
+                    <p><input name="start_date" type="date" placeholder="Bon Voyage"/></p>
+                    <p><input name="end_date" type="date" placeholder="Reality"/></p>
+                    <input class="lime darken-4 waves-effect waves-light btn-small " type="submit" value="SUBMIT">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

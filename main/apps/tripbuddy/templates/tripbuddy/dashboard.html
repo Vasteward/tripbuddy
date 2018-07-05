@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TripBuddy Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+</head>
+<body>
+    <nav class="nav-extended">
+        <div class="nav-content brown darken-4">
+            <ul class="tabs tabs-transparent">
+                <li class="tab"><a class="active" href="/trip/{the_user.id}}">TRIPS</a></li>
+                <li class="tab"><a class="active" href="/success">HOME</a></li>
+                <li class="tab"><a class="active" href="/quotes/logout">LOGOUT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <h2>Your Trip Schedules</h2>
+    <table class="striped highlight centered" >
+        <form action="" method="post">
+            <tr>
+                <th>Description</th>
+                <th>Travel Start Date</th>
+                <th>Travel End Date</th>
+                <th>Plan</th>
+                <th>Action</th>
+            </tr>
+            {{the_user.first_name}}
+            <tr>
+                <td></td>
+                <td>{{the_user.first_name}}</td>
+                <td>{{the_user.last_name}}</td>
+                <td>{{the_user.first_name}}</td>
+                <td>{{the_user.first_name}}</td>
+                <td>
+                    <button value="CANCEL"></button>
+                    <button value="DELETE"></button>
+                </td>
+            </tr>
+        </form>
+    </table>
+    <h3><a class="active" href="/trip/{the_user.id}}">CREATE A TRIP</a></h3>
+    <h2>Other User's Trave Plans</h2>
+    <table class="striped highlight centered" >
+        <form action="" method="post">
+            <tr>
+                <th>Destination</th>
+                <th>Travel Start Date</th>
+                <th>Travel End Date</th>
+                <th>Join the Adventure</th>
+            </tr>
+            {% for person in users %}
+            <tr>
+                <td>{{person.first_name}}</td>
+                <td>{{person.last_name}}</td>
+                <td>{{person.email}}</td>
+                <td>{{person.created_at}}</td>
+                <td>
+                    <button value="JOIN"></button>
+                </td>
+            </tr>
+            {% endfor %}
+        </form>
+    </table>
+</body>
+</html>
